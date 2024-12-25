@@ -3,20 +3,174 @@
   "info": {
     "title": "Product Management",
     "version": "1.0.0",
-    "description": "Welcome to the Product Management API documentation.\n\nThis API serves as the backbone for Product Management",
-    "contact": {
-      "name": "Product Management",
-      "email": "fiorezarn@gmail.com"
-    }
+    "contact": {}
   },
   "servers": [
     {
-      "url": "http://localhost:3000",
-      "description": "Development Server"
+      "url": "http://localhost:3000"
     },
     {
-      "url": "https://lecafe-be.onrender.com",
+      "url": "https://product-management-8or6.onrender.com/",
       "description": "Production Server"
     }
-  ]
+  ],
+  "paths": {
+    "/product": {
+      "get": {
+        "summary": "Get All Product",
+        "description": "Get All Product",
+        "operationId": "getAllProduct",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "Tasty Plastic Fish"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "5"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Product",
+        "description": "Create Product",
+        "operationId": "createProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "example": "lorem ipsum dolar"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Sepatu Kuda"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 10000
+                  },
+                  "stock": {
+                    "type": "number",
+                    "example": 10
+                  }
+                }
+              },
+              "examples": {
+                "Create Product": {
+                  "value": {
+                    "description": "lorem ipsum dolar",
+                    "name": "Sepatu Kuda",
+                    "price": 10000,
+                    "stock": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/product/1": {
+      "get": {
+        "summary": "Get Product By Id",
+        "description": "Get Product By Id",
+        "operationId": "getProductById",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Product",
+        "description": "Delete Product",
+        "operationId": "deleteProduct",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/product/21": {
+      "put": {
+        "summary": "Update Product",
+        "description": "Update Product",
+        "operationId": "updateProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "example": "lorem ipsum haloooooooooo"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Sepatu Kilat"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 10000
+                  },
+                  "stock": {
+                    "type": "number",
+                    "example": 10
+                  }
+                }
+              },
+              "examples": {
+                "Update Product": {
+                  "value": {
+                    "description": "lorem ipsum haloooooooooo",
+                    "name": "Sepatu Kilat",
+                    "price": 10000,
+                    "stock": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "tags": []
 }
