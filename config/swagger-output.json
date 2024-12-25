@@ -52,7 +52,20 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameters"
           }
         }
       },
@@ -64,25 +77,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "type": "string",
-                    "example": "lorem ipsum dolar"
-                  },
-                  "name": {
-                    "type": "string",
-                    "example": "Sepatu Kuda"
-                  },
-                  "price": {
-                    "type": "number",
-                    "example": 10000
-                  },
-                  "stock": {
-                    "type": "number",
-                    "example": 10
-                  }
-                }
+                "$ref": "#/components/schemas/NewProduct"
               },
               "examples": {
                 "Create Product": {
@@ -98,62 +93,77 @@
           }
         },
         "responses": {
-          "200": {
-            "description": ""
+          "201": {
+            "description": "Product created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Duplicate product name"
           }
         }
       }
     },
-    "/product/1": {
+    "/product/{id}": {
       "get": {
         "summary": "Get Product By Id",
-        "description": "Get Product By Id",
+        "description": "Get details of a product by its ID",
         "operationId": "getProductById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12345"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "Product details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
           }
         }
       },
-      "delete": {
-        "summary": "Delete Product",
-        "description": "Delete Product",
-        "operationId": "deleteProduct",
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/product/21": {
       "put": {
         "summary": "Update Product",
-        "description": "Update Product",
+        "description": "Update details of a product",
         "operationId": "updateProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "21"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "type": "string",
-                    "example": "lorem ipsum haloooooooooo"
-                  },
-                  "name": {
-                    "type": "string",
-                    "example": "Sepatu Kilat"
-                  },
-                  "price": {
-                    "type": "number",
-                    "example": 10000
-                  },
-                  "stock": {
-                    "type": "number",
-                    "example": 10
-                  }
-                }
+                "$ref": "#/components/schemas/NewProduct"
               },
               "examples": {
                 "Update Product": {
@@ -170,11 +180,69 @@
         },
         "responses": {
           "200": {
-            "description": ""
+            "description": "Product updated successfully"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Product",
+        "description": "Remove a product by its ID",
+        "operationId": "deleteProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12345"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product deleted successfully"
+          },
+          "404": {
+            "description": "Product not found"
           }
         }
       }
     }
   },
-  "tags": []
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "12345"
+          },
+          "name": {
+            "type": "string",
+            "example": "Sepatu Kuda"
+          },
+          "description": {
+            "type": "string",
+            "example": "lorem ipsum dolar"
+          },
+          "price": {
+            "type": "number",
+            "example": 10000
+          },
+          "stock": {
+            "type": "number",
+            "example": 10
+          }
+        }
+      }
+    }
+  }
 }
