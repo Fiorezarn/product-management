@@ -3,7 +3,11 @@
   "info": {
     "title": "Product Management",
     "version": "1.0.0",
-    "contact": {}
+    "description": "Welcome to the Product Management API documentation.\n\nThis API serves as the backbone for Product Management.",
+    "contact": {
+      "name": "Product Management",
+      "email": "fiorezarn@gmail.com"
+    }
   },
   "servers": [
     {
