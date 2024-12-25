@@ -1,0 +1,22 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Product Management",
+    "version": "1.0.0",
+    "description": "Welcome to the Product Management API documentation.\n\nThis API serves as the backbone for Product Management",
+    "contact": {
+      "name": "Product Management",
+      "email": "fiorezarn@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development Server"
+    },
+    {
+      "url": "https://lecafe-be.onrender.com",
+      "description": "Production Server"
+    }
+  ]
+}
