@@ -14,6 +14,9 @@ dotenv.config();
 
 app.use(bodyParser.json());
 app.use("/product", productRoute);
+app.get("/", (req, res) => {
+  return res.send("Hello World");
+});
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.listen(port, () => {
   console.log(`Server running on ${baseUrl}`);
