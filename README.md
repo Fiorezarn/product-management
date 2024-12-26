@@ -39,8 +39,8 @@ This is a RESTful API for a simple Product Management System, built with Node.js
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/product-management-system.git
-cd product-management-system
+git clone https://github.com/Fiorezarn/product-management.git
+cd product-management
 ```
 
 2. Install dependencies:
