@@ -3,7 +3,7 @@
   "info": {
     "title": "Product Management",
     "version": "1.0.0",
-    "description": "Welcome to the Product Management API documentation.\n\nThis API serves as the backbone for Product Management.",
+    "description": "This is a RESTful API for a simple Product Management System, built with Node.js, Express, and Sequelize ORM.",
     "contact": {
       "name": "Product Management",
       "email": "fiorezarn@gmail.com"
@@ -11,7 +11,8 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3000",
+      "description": "Development Server"
     },
     {
       "url": "https://product-management-8or6.onrender.com/",
@@ -21,6 +22,7 @@
   "paths": {
     "/product": {
       "get": {
+        "tags": ["Product"],
         "summary": "Get All Product",
         "description": "Get All Product",
         "operationId": "getAllProduct",
@@ -70,6 +72,7 @@
         }
       },
       "post": {
+        "tags": ["Product"],
         "summary": "Create Product",
         "description": "Create Product",
         "operationId": "createProduct",
@@ -77,13 +80,13 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProduct"
+                "$ref": "#/components/schemas/Product"
               },
               "examples": {
                 "Create Product": {
                   "value": {
-                    "description": "lorem ipsum dolar",
-                    "name": "Sepatu Kuda",
+                    "description": "Innovative Bacon featuring limp technology and Fresh construction",
+                    "name": "Awesome Soft Cheese",
                     "price": 10000,
                     "stock": 10
                   }
@@ -114,6 +117,7 @@
     },
     "/product/{id}": {
       "get": {
+        "tags": ["Product"],
         "summary": "Get Product By Id",
         "description": "Get details of a product by its ID",
         "operationId": "getProductById",
@@ -145,6 +149,7 @@
         }
       },
       "put": {
+        "tags": ["Product"],
         "summary": "Update Product",
         "description": "Update details of a product",
         "operationId": "updateProduct",
@@ -163,13 +168,13 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProduct"
+                "$ref": "#/components/schemas/Product"
               },
               "examples": {
                 "Update Product": {
                   "value": {
-                    "description": "lorem ipsum haloooooooooo",
-                    "name": "Sepatu Kilat",
+                    "description": "Innovative Bacon featuring limp technology and Fresh construction",
+                    "name": "Awesome Soft Cheese",
                     "price": 10000,
                     "stock": 10
                   }
@@ -191,6 +196,7 @@
         }
       },
       "delete": {
+        "tags": ["Product"],
         "summary": "Delete Product",
         "description": "Remove a product by its ID",
         "operationId": "deleteProduct",
@@ -227,11 +233,11 @@
           },
           "name": {
             "type": "string",
-            "example": "Sepatu Kuda"
+            "example": "Awesome Soft Cheese"
           },
           "description": {
             "type": "string",
-            "example": "lorem ipsum dolar"
+            "example": "Innovative Bacon featuring limp technology and Fresh construction"
           },
           "price": {
             "type": "number",
