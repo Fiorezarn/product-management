@@ -8,12 +8,9 @@ This is a RESTful API for a simple Product Management System, built with Node.js
 - [Tech Stack](#tech-stack)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Configuration](#configuration)
 - [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
 - [API Documentation](#api-documentation)
 - [Deployment](#deployment)
-- [Testing](#testing)
 
 ## ✨ Features
 
@@ -38,7 +35,7 @@ This is a RESTful API for a simple Product Management System, built with Node.js
 - Node.js (v14 or higher)
 - MySQL
 
-## 🚀 Installation
+## 🚀 Installation & Setup
 
 1. Clone the repository:
 ```bash
@@ -47,75 +44,50 @@ cd product-management-system
 ```
 
 2. Install dependencies:
-
-
-```shellscript
+```bash
 npm install
 ```
 
-## ⚙️ Configuration
-
-1. Create a `.env` file in the root directory with the following content:
-
-
-```plaintext
-DB_HOST=your_database_host
-DB_USER=your_database_user
-DB_PASS=your_database_password
-DB_NAME=your_database_name
-PORT=3000
+3. Set up environment variables:
+```bash
+cp .env.example .env
 ```
 
-Replace the placeholders with your actual database credentials.
+4. Update the `.env` file with your database credentials and other configuration settings.
 
 ## 🗄️ Database Setup
 
 1. Create the database:
-
-
-```shellscript
+```bash
 npx sequelize-cli db:create
 ```
 
 2. Run migrations:
-
-
-```shellscript
-npx sequelize-cli db:migrate
+```bash
+npm run migrate:up
 ```
 
 3. (Optional) Seed the database with sample data:
-
-
-```shellscript
-npx sequelize-cli db:seed:all
+```bash
+npm run seed:up
 ```
 
 ## 🏃‍♂️ Running the Application
 
-To start the server in development mode:
-
-```shellscript
-npm run dev
-```
-
-For production:
-
-```shellscript
-npm start
+Start the server:
+```bash
+npm run start
 ```
 
 The API will be available at `http://localhost:3000` (or the port you specified in the .env file).
 
 ## 📚 API Documentation
 
-The API documentation is available in Postman format. You can find the exported collection file in the `docs` directory of this repository.
+API documentation is available via Swagger UI at:
+![product-management](https://github.com/user-attachments/assets/8534409f-8d3c-4515-9619-82abe6fc10ad)
 
-To view the API documentation:
 
-1. Import the collection file into Postman.
-2. The collection includes all available endpoints with example requests and responses.
-
+[https://product-management-8or6.onrender.com/api-docs/#/](https://product-management-8or6.onrender.com/api-docs/#/)
 
 ### Main Endpoints
 
@@ -125,24 +97,11 @@ To view the API documentation:
 - `PUT /products/:id`: Update a product
 - `DELETE /products/:id`: Delete a product
 
-
-For detailed information on request/response formats and query parameters, please refer to the Postman documentation.
-
 ## 🚀 Deployment
 
 The API is deployed on Render and can be accessed at:
 
 [https://product-management-8or6.onrender.com](https://product-management-8or6.onrender.com)
-
-## 🧪 Testing
-
-To run tests:
-
-```shellscript
-npm test
-```
-
-This will execute the test suite and provide a report on the API's functionality.
 
 ## 🤝 Contributing
 
@@ -151,8 +110,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📄 License
 
 This project is licensed under the MIT License.
-
-```plaintext
-
-This README now includes emojis for better visual appeal and uses icons to represent the tech stack you're using. The code is presented in a single block without breaks, making it easier to copy and paste. The tech stack is displayed using badges, which provide a clean and informative look.
-```
